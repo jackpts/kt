@@ -1,0 +1,22 @@
+{
+  "name": "klika-tech",
+  "version": "1.0.0",
+  "description": "test task for YP",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackpts/klika-tech.git"
+  },
+  "author": "Yauheni Pauliukanets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackpts/klika-tech/issues"
+  },
+  "homepage": "https://github.com/jackpts/klika-tech#readme"
+}
