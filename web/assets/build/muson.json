@@ -1,0 +1,38 @@
+{
+  "columns": [
+    { "key": "name", "label": "Исполнитель" },
+    { "key": "song", "label": "Песня" },
+    { "key": "genre", "label": "Жанр" },
+    { "key": "year", "label": "Год" }
+  ],
+  "data": [
+    {
+      "id": "1",
+      "name": "The Kingston Trio",
+      "song": "Tom Dooley",
+      "genre": "Folk",
+      "year": "1958"
+    },
+    {
+      "id": "2",
+      "name": "Led Zeppelin",
+      "song": "Kashmir",
+      "genre": "Rock",
+      "year": "1975"
+    },
+    {
+      "id": "3",
+      "name": "Miles Davis",
+      "song": "Blue in Green",
+      "genre": "Jazz",
+      "year": "1959"
+    },
+    {
+      "id": "4",
+      "name": "Muddy Waters",
+      "song": "Mannish Boy",
+      "genre": "Blues",
+      "year": "1955"
+    }
+  ]
+}

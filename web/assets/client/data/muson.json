@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "The Kingston Trio",
+      "song": "Tom Dooley",
+      "genre": "Folk",
+      "year": "1958"
+    },
+    {
+      "name": "Led Zeppelin",
+      "song": "Kashmir",
+      "genre": "Rock",
+      "year": "1975"
+    },
+    {
+      "name": "Miles Davis",
+      "song": "Blue in Green",
+      "genre": "Jazz",
+      "year": "1959"
+    },
+    {
+      "name": "Muddy Waters",
+      "song": "Mannish Boy",
+      "genre": "Blues",
+      "year": "1955"
+    }
+  ]
+}

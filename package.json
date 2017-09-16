@@ -7,7 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "prod": "export NODE_ENV=production; webpack"
   },
   "repository": {
     "type": "git",
@@ -18,5 +21,32 @@
   "bugs": {
     "url": "https://github.com/jackpts/klika-tech/issues"
   },
-  "homepage": "https://github.com/jackpts/klika-tech#readme"
+  "homepage": "https://github.com/jackpts/klika-tech#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "jquery": "^3.2.1",
+    "json-loader": "^0.5.7",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "^1.3.1",
+    "react-router": "^3.0.5",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.6.0",
+    "webpack-notifier": "^1.5.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "create-react-class": "^15.6.0",
+    "css-loader": "^0.28.7",
+    "postcss-loader": "^2.0.6",
+    "prop-types": "^15.5.10",
+    "react-router-dom": "^4.2.2",
+    "style-loader": "^0.18.2"
+  }
 }
