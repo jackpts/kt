@@ -1,7 +1,15 @@
 section[role=main] {
   margin: 30px auto;
   display: flex;
+  flex-direction: column;
+}
+main {
+  display: flex;
   justify-content: center;
+}
+footer {
+  justify-content: center;
+  display: flex;
 }
 .mus-table {
   text-align: left;
@@ -116,5 +124,50 @@ section[role=main] {
     background-color: white;
     border: solid 2px #999;
     cursor: pointer;
+  }
+}
+
+.pagination {
+  padding: 0;
+  line-height: 30px;
+
+  li{
+    display: inline-block;
+    font-size: large;
+    font-weight: 600;
+    color: #666;
+    border-radius: 50%;
+    border: solid 2px transparent;
+
+    &:not(.disabled):hover {
+      border-color: #999;
+    }
+
+    &.active {
+      background-color: #eee;
+      border-color: #666;
+    }
+    &.disabled {
+      color: #999;
+
+      > a { cursor: default; }
+    }
+
+    > a {
+      padding: 0 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  .prev, .next {
+    line-height: 34px;
+    vertical-align: bottom;
+    font-size: xx-large;
+  }
+  .prev {
+    padding: 0 10px 0 6px;
+  }
+  .next {
+    padding: 0 6px 0 10px;
   }
 }
