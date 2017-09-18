@@ -252,13 +252,18 @@ class Filter extends React.Component {
         return cols.map(function(colData) {
             if (colData.key && colData.key !== 'song') {
                 let options = _.map(data, colData.key);
+                let uniqOptions = options.filter((elem, index, self) => {
+                    return index === self.indexOf(elem);
+                });
+
                 return <li key={colData.key}>
                     <label>{colData.label}</label>
                     <select defaultValue={'Все'} onChange={event => self.props.callbackFromFilter(colData.key, event.target.value) } >
                         <option key={'0'} defaultValue={'All'}>Все</option>
-                        {options.map((opt, i) =>
-                            <option key={i+1} value={opt}>{opt}</option>
-                        )}
+                        { uniqOptions.map((opt, i) =>
+                                <option key={i+1} value={opt}>{opt}</option>
+                            )
+                        }
                     </select>
                 </li>;
             }

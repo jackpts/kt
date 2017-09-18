@@ -33,6 +33,104 @@
       "song": "Mannish Boy",
       "genre": "Blues",
       "year": "1955"
+    },
+    {
+      "id": "5",
+      "name": "From Ashes to New",
+      "song": "Breaking now",
+      "genre": "Nu metal",
+      "year": "2016"
+    },
+    {
+      "id": "6",
+      "name": "Pink",
+      "song": "What about us",
+      "genre": "Pop",
+      "year": "2017"
+    },
+    {
+      "id": "7",
+      "name": "The Birthday Massacre",
+      "song": "Under Your Spell",
+      "genre": "Synth rock",
+      "year": "2017"
+    },
+    {
+      "id": "8",
+      "name": "Blutengel",
+      "song": "Dein Gott",
+      "genre": "Darkwave",
+      "year": "2015"
+    },
+    {
+      "id": "9",
+      "name": "Zeraphine",
+      "song": "Out of the void",
+      "genre": "Gothic alt rock",
+      "year": "2012"
+    },
+    {
+      "id": "10",
+      "name": "Eisbrecher",
+      "song": "Rette Mich",
+      "genre": "Rock Electronic",
+      "year": "2012"
+    },
+    {
+      "id": "11",
+      "name": "My Darkest Days",
+      "song": "Save Yourself",
+      "genre": "Rock",
+      "year": "2012"
+    },
+    {
+      "id": "12",
+      "name": "Solar Fake",
+      "song": "You need the drugs",
+      "genre": "Gothic alt rock",
+      "year": "2015"
+    },
+    {
+      "id": "13",
+      "name": "Skillet",
+      "song": "Watching for Comets",
+      "genre": "Christian rock",
+      "year": "2016"
+    },
+    {
+      "id": "14",
+      "name": "Skillet",
+      "song": "I Want To Live",
+      "genre": "Christian rock",
+      "year": "2016"
+    },
+    {
+      "id": "15",
+      "name": "Solar Fake",
+      "song": "Not What I Wanted",
+      "genre": "Gothic alt rock",
+      "year": "2015"
+    },
+    {
+      "id": "16",
+      "name": "Solar Fake",
+      "song": "Fake To Be Alive",
+      "genre": "Gothic alt rock",
+      "year": "2016"
+    },
+    {
+      "id": "17",
+      "name": "Solar Fake",
+      "song": " I Don't Want You In Here",
+      "genre": "Gothic alt rock",
+      "year": "2016"
+    },
+    {
+      "id": "18",
+      "name": "Skillet",
+      "song": "Whisper in the dark",
+      "genre": "Christian rock",
+      "year": "2006"
     }
   ]
 }
