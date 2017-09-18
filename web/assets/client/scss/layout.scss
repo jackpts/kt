@@ -18,13 +18,72 @@ section[role=main] {
     border: solid 2px #999;
   }
   th {
+    position: relative;
     color: #444;
     background-color: #eee;
     cursor: pointer;
+
+    &.unsorted {
+      &:before {
+        position: absolute;
+        top: 40%;
+        right: 10px;
+        display: block;
+        margin-top: -9px;
+        width: 0;
+        height: 0;
+        content: "";
+        border: 6px solid transparent;
+        border-bottom-color: #999;
+      }
+      &:after {
+        position: absolute;
+        top: 55%;
+        right: 10px;
+        display: block;
+        margin-top: 1px;
+        width: 0;
+        height: 0;
+        content: "";
+        border: 6px solid transparent;
+        border-top-color: #999;
+      }
+    }
+    &.asc {
+      &:before {
+        position: absolute;
+        top: 40%;
+        right: 10px;
+        display: block;
+        margin-top: -9px;
+        width: 0;
+        height: 0;
+        content: "";
+        border: 6px solid transparent;
+        border-bottom-color: #444;
+      }
+    }
+    &.desc {
+      &:after {
+        position: absolute;
+        top: 55%;
+        right: 10px;
+        display: block;
+        margin-top: 1px;
+        width: 0;
+        height: 0;
+        content: "";
+        border: 6px solid transparent;
+        border-top-color: #444;
+      }
+    }
   }
   td {
     font-weight: 600;
     color: #666;
+  }
+  td[colspan='4'] {
+    text-align: center;
   }
 }
 
@@ -56,5 +115,6 @@ section[role=main] {
     color: #666;
     background-color: white;
     border: solid 2px #999;
+    cursor: pointer;
   }
 }
