@@ -1,7 +1,5 @@
 import React from 'react';
-let createReactClass = require('create-react-class');
-// import musURL from '../../build/muson.json';
-let musURL = 'http://localhost:8000/assets/build/muson.json';
+let musURL = '/assets/build/muson.json';
 import _ from 'lodash';
 
 export default class App extends React.Component {
@@ -22,33 +20,52 @@ export class DoMain extends React.Component {
             musData : [],
             searchFields : [],
             searchValues : [],
-            pageOfItems: []
+            pageOfItems: [],
+            filteredData: [],
+            runOnce: false
         };
-        this.myFilterCallback = this.myFilterCallback.bind(this);
+        this.filterChanged = this.filterChanged.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
     }
+    
     componentDidMount() {
-        // this.fetchData().done()
         this.getMusonJSON();
     }
 
-    myFilterCallback(field, value) {
-        let searchFields = this.state.searchFields,
-            searchValues = this.state.searchValues,
-            ind = searchFields.indexOf(field);
+    filterChanged(field, value) {
+        let data = this.state.musData,
+            fields = this.state.searchFields,
+            values = this.state.searchValues,
+            ind = fields.indexOf(field);
         if(value === 'Все' && ind > -1) {
-            searchFields.splice(ind, 1);
-            searchValues.splice(ind, 1);
+            fields.splice(ind, 1);
+            values.splice(ind, 1);
         } else if(value !== 'Все' && ind > -1){
-            searchValues[ind] = value;
+            values[ind] = value;
         } else {
-            searchFields.push(field);
-            searchValues.push(value);
+            fields.push(field);
+            values.push(value);
         }
+
+        let filteredData = data.filter(
+            (music) => {
+                let fieldsArray = [];
+                fields.map(f => fieldsArray.push(music[f]));
+                return _.isEqual(fieldsArray, values);
+            }
+        );
+
         this.setState({
-            searchValues: searchValues,
-            searchFields: searchFields
+            searchValues: values,
+            searchFields: fields,
+            filteredData: filteredData
         });
+
+        if(!this.state.runOnce) {
+            this.setState({
+                runOnce: true
+            });
+        }
     }
 
     onChangePage(pageOfItems) {
@@ -60,16 +77,22 @@ export class DoMain extends React.Component {
             data = this.state.musData,
             fields = this.state.searchFields,
             values = this.state.searchValues,
-            pageOfItems = this.state.pageOfItems;
+            pageOfItems = this.state.pageOfItems,
+            filteredData = this.state.filteredData,
+            runOnce = this.state.runOnce;
+
+        if(filteredData.length < 1 && !runOnce) {
+            filteredData = data;
+        }
 
         return (
             <section role="main">
                 <main>
-                    <Table cols={cols} data={pageOfItems} fields={fields} values={values} pageOfItems={pageOfItems} />
-                    <Filter cols={cols} data={data} callbackFromFilter={this.myFilterCallback} />
+                    <Table cols={cols} data={pageOfItems} fields={fields} values={values} />
+                    <Filter cols={cols} data={data} onChangeFilter={this.filterChanged} />
                 </main>
                 <footer>
-                    <Pagination data={data} onChangePage={this.onChangePage} />
+                    <Pagination data={filteredData} onChangePage={this.onChangePage} />
                 </footer>
             </section>
         )
@@ -80,7 +103,6 @@ export class DoMain extends React.Component {
             .then((response) => response.json())
             .then((responseJSON) => {
                 console.info('Success to get muson.json');
-                //console.log(responseJSON);
                 this.setState({
                     musCols: responseJSON.columns,
                     musData: responseJSON.data
@@ -88,12 +110,6 @@ export class DoMain extends React.Component {
             })
             .catch((error) => { console.warn(error); });
     }
-    /* async fetchData () {
-        const response = await fetch(musURL);
-        const json = await response.json();
-        const musData = json.data;
-        this.setState({musData: musData})
-    } */
 }
 
 class Table extends React.Component {
@@ -102,7 +118,7 @@ class Table extends React.Component {
         super();
         this.thClick = this.thClick.bind(this);
         this.state = {
-            sortDir: 0,
+            sortDir: 2,
             sortColumn: 'name'
         };
     }
@@ -134,6 +150,9 @@ class Table extends React.Component {
             sortDir++;
             if(sortDir > 2) {
                 sortDir = 0;
+                if(sortColumn === 'name') {
+                    sortDir = 1;
+                }
             }
         }
         sortColumn = curColumn;
@@ -167,6 +186,12 @@ class Table extends React.Component {
 
         if(sortDir === 0) {
             sortColumn = 'name';
+            let firstColumn = document.querySelectorAll('.mus-table th')[0];
+            firstColumn.className = firstColumn.className.replace(/unsorted/,'asc');
+            this.setState({
+                sortDir: 1,
+                sortColumn: sortColumn
+            });
             return this.props.data.sort(function(a, b){
                 if (a[sortColumn] === b[sortColumn]) return 0;
 
@@ -259,7 +284,7 @@ class Filter extends React.Component {
 
                 return <li key={colData.key}>
                     <label>{colData.label}</label>
-                    <select defaultValue={'Все'} onChange={event => self.props.callbackFromFilter(colData.key, event.target.value) } >
+                    <select defaultValue={'Все'} onChange={event => self.props.onChangeFilter(colData.key, event.target.value) } >
                         <option key={'0'} defaultValue={'All'}>Все</option>
                         { uniqOptions.map((opt, i) =>
                                 <option key={i+1} value={opt}>{opt}</option>
@@ -277,9 +302,9 @@ class Pagination extends React.Component {
         super(props);
         this.state = {pager: {}};
     }
-
     componentWillMount() {
-        if (this.props.data && this.props.data.length) {
+        let data = this.props.data;
+        if (data && data.length) {
             this.setPage(this.props.initialPage);
         }
     }
@@ -289,8 +314,11 @@ class Pagination extends React.Component {
         }
     }
     setPage(page) {
-        let data = this.props.data;
-        let pager = this.state.pager;
+        let data = this.props.data,
+            pager = this.state.pager,
+            pageSize = this.props.pageSize;
+
+        pager.totalPages = Math.ceil(data.length / pageSize);
 
         if (page < 1 || page > pager.totalPages) { return; }
         // get new pager object for specified page
@@ -301,29 +329,30 @@ class Pagination extends React.Component {
         // call change page function in parent component
         this.props.onChangePage(pageOfItems);
     }
-    getPager(totalItems, currentPage, pageSize) {
+    getPager(totalItems, currentPage) {
         // default to first page
         currentPage = currentPage || 1;
-        // default page size is 4
-        pageSize = pageSize || 4;
+        // default page size is pageSize
+        let pageSize = this.props.pageSize;
         // calculate total pages
         let totalPages = Math.ceil(totalItems / pageSize);
 
         let startPage, endPage;
-        if (totalPages <= 4) {
-            // less than 4 total pages so show all
+        if (totalPages <= pageSize) {
+            // less than pageSize total pages so show all
             startPage = 1;
             endPage = totalPages;
         } else {
-            // more than 4 total pages so calculate start and end pages
-            if (currentPage <= 3) {
+            // more than pageSize total pages so calculate start and end pages
+            let middlePage = Math.ceil(pageSize / 2);
+            if (currentPage <= middlePage + 1) {
                 startPage = 1;
-                endPage = 4;
+                endPage = pageSize;
             } else if (currentPage + 1 >= totalPages) {
-                startPage = totalPages - 3;
+                startPage = totalPages - (middlePage + 1);
                 endPage = totalPages;
             } else {
-                startPage = currentPage - 2;
+                startPage = currentPage - middlePage;
                 endPage = currentPage + 1;
             }
         }
@@ -382,5 +411,6 @@ class Pagination extends React.Component {
     }
 }
 Pagination.defaultProps = {
-    initialPage: 1
+    initialPage: 1,
+    pageSize: 4
 };

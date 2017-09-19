@@ -131,6 +131,20 @@
       "song": "Whisper in the dark",
       "genre": "Christian rock",
       "year": "2006"
+    },
+    {
+      "id": "19",
+      "name": "Solar Fake",
+      "song": "Stay",
+      "genre": "Gothic alt rock",
+      "year": "2015"
+    },
+    {
+      "id": "20",
+      "name": "Solar Fake",
+      "song": "All the things you say",
+      "genre": "Gothic alt rock",
+      "year": "2016"
     }
   ]
 }

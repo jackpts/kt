@@ -31,6 +31,10 @@ footer {
     background-color: #eee;
     cursor: pointer;
 
+    &:hover{
+      background-color: #ddd;
+    }
+
     &.unsorted {
       &:before {
         position: absolute;
