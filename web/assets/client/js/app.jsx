@@ -406,9 +406,11 @@ class Pagination extends React.Component {
     }
 
     paging() {
+        let curPage = this.state.pageSize;
         return <ul className="paging">
                     {this.state.pageSet.map((p) => {
-                       return <li key={p} onClick={() => this.setState({ pageSize: p })}>{p}</li>
+                       return <li key={p} className={curPage === p ? 'active' : ''}
+                                  onClick={() => this.setState({ pageSize: p })}>{p}</li>
                     })}
               </ul>;
     }

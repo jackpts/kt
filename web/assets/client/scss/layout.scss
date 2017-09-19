@@ -152,6 +152,8 @@ footer {
     &.active {
       background-color: #eee;
       border-color: #666;
+
+      > a { cursor: default; }
     }
     &.disabled {
       color: #999;
@@ -191,10 +193,17 @@ footer {
     font-weight: 600;
     color: #666;
     border: solid 2px #666;
-    cursor: pointer;
 
     &:hover{
       background-color: #ddd;
+    }
+
+    &.active {
+      background-color: #ddd;
+      cursor: default;
+    }
+    &:not(.active) {
+      cursor: pointer;
     }
   }
   li + li {
