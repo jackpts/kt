@@ -8,8 +8,10 @@ main {
   justify-content: center;
 }
 footer {
-  justify-content: center;
+  position: relative;
   display: flex;
+  margin: .5em 0 2em;
+  justify-content: center;
 }
 .mus-table {
   text-align: left;
@@ -173,5 +175,29 @@ footer {
   }
   .next {
     padding: 0 6px 0 10px;
+  }
+}
+
+.paging {
+  position: absolute;
+  margin-left: 15px;
+  padding: 0;
+  line-height: 30px;
+
+  li{
+    display: inline-block;
+    padding: 0 8px;
+    font-size: large;
+    font-weight: 600;
+    color: #666;
+    border: solid 2px #666;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #ddd;
+    }
+  }
+  li + li {
+    border-left: none;
   }
 }

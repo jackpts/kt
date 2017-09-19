@@ -91,9 +91,7 @@ export class DoMain extends React.Component {
                     <Table cols={cols} data={pageOfItems} fields={fields} values={values} />
                     <Filter cols={cols} data={data} onChangeFilter={this.filterChanged} />
                 </main>
-                <footer>
-                    <Pagination data={filteredData} onChangePage={this.onChangePage} />
-                </footer>
+                <Pagination data={filteredData} onChangePage={this.onChangePage} />
             </section>
         )
     }
@@ -242,8 +240,8 @@ class Table extends React.Component {
         if(filteredMusic.length < 1) {
             return <tr key={'1'}><td colSpan="4" key={'1'}>Sorry, nothing found!</td></tr>
         }
-        return filteredMusic.map(function(item) {
-            let cells = cols.map(function(colData) {
+        return filteredMusic.map((item) => {
+            let cells = cols.map((colData) => {
                 return <td key={colData.key + item.id}>{item[colData.key]}</td>;
             });
             return <tr key={item.id}>{cells}</tr>;
@@ -298,25 +296,43 @@ class Filter extends React.Component {
 }
 
 class Pagination extends React.Component {
+
     constructor(props) {
         super(props);
-        this.state = {pager: {}};
+        this.state = {
+            pager: {},
+            pageSet: [4, 6 , 10, 20],
+            pageSize: 4
+        };
     }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+    }
+
     componentWillMount() {
         let data = this.props.data;
         if (data && data.length) {
             this.setPage(this.props.initialPage);
         }
     }
+
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.data !== prevProps.data) {
-            this.setPage(this.props.initialPage);
+        if (this.props.data !== prevProps.data ||
+            this.state.pageSize !== prevState.pageSize) {
+                this.setPage(this.props.initialPage);
         }
+        this.setPagingStyle();
     }
+
+    updateDimensions() {
+        this.setPagingStyle();
+    }
+
     setPage(page) {
         let data = this.props.data,
             pager = this.state.pager,
-            pageSize = this.props.pageSize;
+            pageSize = this.state.pageSize;
 
         pager.totalPages = Math.ceil(data.length / pageSize);
 
@@ -329,11 +345,12 @@ class Pagination extends React.Component {
         // call change page function in parent component
         this.props.onChangePage(pageOfItems);
     }
+
     getPager(totalItems, currentPage) {
         // default to first page
         currentPage = currentPage || 1;
         // default page size is pageSize
-        let pageSize = this.props.pageSize;
+        let pageSize = this.state.pageSize;
         // calculate total pages
         let totalPages = Math.ceil(totalItems / pageSize);
 
@@ -377,40 +394,66 @@ class Pagination extends React.Component {
             pages: pages
         };
     }
+
+    setPagingStyle() {
+        let table = document.querySelector('.mus-table'),
+            tfilter = document.querySelector('.table-filter');
+        if (table && tfilter) {
+            let pagingOffset = Math.ceil((document.documentElement.clientWidth - table.offsetWidth - tfilter.offsetWidth) / 2 - 15);
+            let paging = document.querySelector('.paging');
+            paging && (paging.style.right = pagingOffset + 'px');
+        }
+    }
+
+    paging() {
+        return <ul className="paging">
+                    {this.state.pageSet.map((p) => {
+                       return <li key={p} onClick={() => this.setState({ pageSize: p })}>{p}</li>
+                    })}
+              </ul>;
+    }
+
     render() {
-        let pager = this.state.pager;
+        let pager = this.state.pager,
+            paging = this.paging();
 
         if (!pager.pages || pager.pages.length <= 1) {
-            // don't display pager if there is only 1 page
-            return null;
+                // don't display pager if there is only 1 page (return null)
+                // but return a paging anyway;
+            return  (
+                    <footer>
+                        {paging}
+                    </footer>
+            );
         }
 
         return (
-            <ul className="pagination">
-                {/*<li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a href='#' onClick={() => this.setPage(1)}>First</a>
-                </li>*/}
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a href='#' onClick={() => this.setPage(pager.currentPage - 1)} className={'prev'}>&#60;</a>
-                </li>
-                {pager.pages.map((page, index) =>
-                    <li key={index} className={pager.currentPage === page ? 'active' : ''}>
-                        <a href='#' onClick={() => this.setPage(page)}>{page}</a>
+            <footer>
+                <ul className="pagination">
+                    {/*<li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                        <a href='#' onClick={() => this.setPage(1)}>First</a>
+                    </li>*/}
+                    <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                        <a href='#' onClick={() => this.setPage(pager.currentPage - 1)} className={'prev'}>&#60;</a>
                     </li>
-                )}
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a href='#' onClick={() => this.setPage(pager.currentPage + 1)} className={'next'}>&#62;</a>
-                </li>
-                {/*<li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a href='#' onClick={() => this.setPage(pager.totalPages)}>Last</a>
-                </li>*/}
+                    {pager.pages.map((page, index) =>
+                        <li key={index} className={pager.currentPage === page ? 'active' : ''}>
+                            <a href='#' onClick={() => this.setPage(page)}>{page}</a>
+                        </li>
+                    )}
+                    <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                        <a href='#' onClick={() => this.setPage(pager.currentPage + 1)} className={'next'}>&#62;</a>
+                    </li>
+                    {/*<li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                        <a href='#' onClick={() => this.setPage(pager.totalPages)}>Last</a>
+                    </li>*/}
+                </ul>
 
-                {/* TODO - goto 10/25/50/100 pages */}
-            </ul>
+                {paging}
+            </footer>
         );
     }
 }
 Pagination.defaultProps = {
-    initialPage: 1,
-    pageSize: 4
+    initialPage: 1
 };
