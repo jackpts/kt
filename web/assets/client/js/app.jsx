@@ -71,10 +71,8 @@ export class DoMain extends React.Component {
     setSortParams(sortDir, sortColumn) {
         this.setState({
             sortColumn: sortColumn,
-            sortDir: sortDir,
-            musData: this.sortData(this.state.musData)
+            sortDir: sortDir
         });
-
     }
 
     sortData(dataToSort) {
@@ -82,7 +80,8 @@ export class DoMain extends React.Component {
             sortDir = this.state.sortDir;
 
         return dataToSort.sort((a, b) => {
-            if (a[sortColumn] === b[sortColumn]) return 0;
+            if (a[sortColumn] === b[sortColumn])
+                return 0;
 
             if ((a[sortColumn] > b[sortColumn] && sortDir === 1)
                 || (a[sortColumn] < b[sortColumn] && sortDir === 2))
@@ -117,13 +116,14 @@ export class DoMain extends React.Component {
 
         let paginationData = data,
             tableData = pageOfItems,
-            filterFlag =  JSON.stringify(this.state.searchValues);
+            filterFlag = JSON.stringify(this.state.searchValues);
 
         paginationData = (sortDir > 0) ? this.sortData(paginationData) : this.state.musData0;
         if(filterOn) {
             paginationData = this.filterData(paginationData);
             tableData = this.filterData(tableData);
         }
+        let sortFlag = this.state.sortColumn + sortDir;
 
         return (
             <section role="main">
@@ -131,7 +131,7 @@ export class DoMain extends React.Component {
                     <Table cols={cols} data={tableData} setSortParams={this.setSortParams} />
                     <Filter cols={cols} options={filteredOptions} onChangeFilter={this.filterChanged} />
                 </main>
-                <Pagination data={paginationData} onChangePage={this.onChangePage} filterFlag={filterFlag} sortOn={sortDir} />
+                <Pagination data={paginationData} onChangePage={this.onChangePage} filterFlag={filterFlag} sortFlag={sortFlag} />
             </section>
         )
     }
@@ -339,7 +339,7 @@ class Pagination extends React.Component {
         }
         else if (
             this.props.data !== prevProps.data ||
-            this.props.sortOn !== prevProps.sortOn
+            this.props.sortFlag !== prevProps.sortFlag
         ) {
             this.setPage(this.state.pager.currentPage);
         }
