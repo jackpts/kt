@@ -54,8 +54,6 @@ export class DoMain extends React.Component {
             values.push(value);
         }
 
-        console.log('values, fields:', values, fields);
-
         this.setState({
             searchValues: values,
             searchFields: fields,
@@ -67,7 +65,6 @@ export class DoMain extends React.Component {
     }
 
     onChangePage(pageOfItems) {
-        //console.log('call onChangePage=');
         this.setState({ pageOfItems: pageOfItems });
     }
 
@@ -335,12 +332,14 @@ class Pagination extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (
             this.props.data !== prevProps.data ||
-            this.props.filterOn !== prevProps.filterOn ||
             this.props.sortOn !== prevProps.sortOn
         ) {
             this.setPage(this.state.pager.currentPage);
-          }
-        if (this.state.pageSize !== prevState.pageSize) {
+        }
+        if (
+            this.props.filterOn !== prevProps.filterOn ||
+            this.state.pageSize !== prevState.pageSize
+        ) {
               this.setPage(this.props.initialPage);
         }
 
