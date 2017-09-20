@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91283bf4-baf1-46a4-b27e-b8be170e197d" name="Default" comment="">
+    <list default="true" id="91283bf4-baf1-46a4-b27e-b8be170e197d" name="Default" comment="pagination and filtering fixes">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/build/muson.json" afterPath="$PROJECT_DIR$/web/assets/build/muson.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/client/js/app.jsx" afterPath="$PROJECT_DIR$/web/assets/client/js/app.jsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/client/scss/layout.scss" afterPath="$PROJECT_DIR$/web/assets/client/scss/layout.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +56,8 @@
       <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="822">
-              <caret line="68" column="8" lean-forward="false" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+            <state relative-caret-position="210">
+              <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -63,7 +66,7 @@
       <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/client/js/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="555">
               <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -72,24 +75,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/assets/client/js/app.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="408" column="42" lean-forward="false" selection-start-line="408" selection-start-column="42" selection-end-line="408" selection-end-column="42" />
+            <state relative-caret-position="397">
+              <caret line="236" column="23" lean-forward="true" selection-start-line="236" selection-start-column="23" selection-end-line="236" selection-end-column="23" />
               <folding>
-                <marker date="1505850689928" expanded="false" signature="9159:9297" ph="{...}" />
-                <marker date="1505850689928" expanded="false" signature="10298:12010" ph="{...}" />
+                <element signature="n#!!block;n#filterChanged#0;n#DoMain#0" expanded="false" />
+                <element signature="n#!!block;n#onChangePage#0;n#DoMain#0" expanded="false" />
+                <element signature="n#!!block;n#sortData#0;n#DoMain#0" expanded="false" />
+                <element signature="n#!!block;n#filterData#0;n#DoMain#0" expanded="false" />
+                <element signature="n#!!block;n#getMusonJSON#0;n#DoMain#0" expanded="false" />
+                <element signature="n#!!block;n#setFilteredOptions#0;n#DoMain#0" expanded="false" />
+                <element signature="e#6502#7024#0" expanded="false" />
+                <element signature="n#Filter#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="layout.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/client/scss/layout.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="156" column="5" lean-forward="true" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+            <state relative-caret-position="429">
+              <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -98,8 +107,8 @@
       <file leaf-file-name="muson.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/assets/build/muson.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2628">
-              <caret line="146" column="19" lean-forward="false" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+            <state relative-caret-position="2322">
+              <caret line="129" column="24" lean-forward="false" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -109,25 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>callbackFromParent</find>
-      <find>sortMusTable</find>
-      <find>componen</find>
-      <find>constructor</find>
-      <find>sortAsc</find>
-      <find>callbackFromTable</find>
-      <find>myTableCallback</find>
-      <find>nextst</find>
-      <find>thClick</find>
-      <find>setState</find>
-      <find>componentdid</find>
-      <find>new va</find>
-      <find>filt</find>
-      <find>nu</find>
-      <find>getPager</find>
-      <find>this.props.items</find>
-      <find>items</find>
-      <find>filteredm</find>
-      <find>.musda</find>
       <find>pageSize</find>
       <find>4</find>
       <find>callbackFromFilter</find>
@@ -139,6 +129,25 @@
       <find>/*</find>
       <find>//</find>
       <find>todo</find>
+      <find>i don</find>
+      <find>sortMusTable</find>
+      <find>sortOn</find>
+      <find>pageof</find>
+      <find>currentData</find>
+      <find>shouldSort</find>
+      <find>quer</find>
+      <find>componentWillReceiveProps</find>
+      <find>splice</find>
+      <find>search</find>
+      <find>sortdir</find>
+      <find>onChangePage</find>
+      <find>onchange</find>
+      <find>pager</find>
+      <find>setSortParams</find>
+      <find>searchFields</find>
+      <find>setPagingStyle</find>
+      <find>updateDimensions</find>
+      <find>__</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -147,6 +156,8 @@
       <replace>this.props.data</replace>
       <replace>onChangeFilter</replace>
       <replace>filterChanged</replace>
+      <replace>paginationData</replace>
+      <replace>setSortParams</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -178,8 +189,9 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/web/assets/client/js/index.jsx" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web/assets/build/muson.json" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/web/assets/client/js/app.jsx" />
         <option value="$PROJECT_DIR$/web/assets/client/scss/layout.scss" />
       </list>
@@ -245,7 +257,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="68" />
-    <option name="y" value="328" />
+    <option name="y" value="139" />
     <option name="width" value="1717" />
     <option name="height" value="941" />
   </component>
@@ -265,9 +277,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -371,14 +384,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="routing.yml&#9;FILE&#9;file:///home/jacky/klika-tech/app/config/routing.yml&#10;index.ht&#9;FILE&#9;file:///home/jacky/klika-tech/app/Resources/views/default/index.html.twig" />
+    <property name="SearchEverywhereHistoryKey" value="readm&#9;FILE&#9;file:///home/jacky/klika-tech/README.md&#10;routing.yml&#9;FILE&#9;file:///home/jacky/klika-tech/app/config/routing.yml&#10;index.ht&#9;FILE&#9;file:///home/jacky/klika-tech/app/Resources/views/default/index.html.twig" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v7.5.0/bin/node" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="JavaScriptPreferStrict" value="false" />
@@ -509,6 +521,7 @@
       <workItem from="1505727836443" duration="37772000" />
       <workItem from="1505808829726" duration="7689000" />
       <workItem from="1505827894888" duration="16098000" />
+      <workItem from="1505895615602" duration="25317000" />
     </task>
     <task id="LOCAL-00001" summary="2nd commit">
       <created>1505600715704</created>
@@ -545,14 +558,21 @@
       <option name="project" value="LOCAL" />
       <updated>1505839495042</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="readme file working terms update">
+      <created>1505851755951</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1505851755951</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135075000" />
+    <option name="totallyTimeSpent" value="174391000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="328" width="1920" height="1053" extended-state="6" />
+    <frame x="68" y="139" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -564,10 +584,10 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2529859" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31161782" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21715526" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1855615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1855615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -576,31 +596,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2529859" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21824104" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1855615" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,11 +642,12 @@
     <MESSAGE value="json data and uniq list update" />
     <MESSAGE value="pagination added" />
     <MESSAGE value="pagination and filtering fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="pagination and filtering fixes" />
+    <MESSAGE value="readme file working terms update" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme file working terms update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -681,8 +683,14 @@
         <state relative-caret-position="2232">
           <caret line="124" column="22" lean-forward="false" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="22" />
           <folding>
-            <marker date="1505850689928" expanded="false" signature="9159:9297" ph="{...}" />
-            <marker date="1505850689928" expanded="false" signature="10298:12010" ph="{...}" />
+            <element signature="n#!!block;n#filterChanged#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#onChangePage#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#sortData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#filterData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#getMusonJSON#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#setFilteredOptions#0;n#DoMain#0" expanded="false" />
+            <element signature="e#6502#7024#0" expanded="false" />
+            <element signature="n#Filter#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -728,8 +736,14 @@
         <state relative-caret-position="1854">
           <caret line="120" column="55" lean-forward="true" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
           <folding>
-            <marker date="1505850689928" expanded="false" signature="9159:9297" ph="{...}" />
-            <marker date="1505850689928" expanded="false" signature="10298:12010" ph="{...}" />
+            <element signature="n#!!block;n#filterChanged#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#onChangePage#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#sortData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#filterData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#getMusonJSON#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#setFilteredOptions#0;n#DoMain#0" expanded="false" />
+            <element signature="e#6502#7024#0" expanded="false" />
+            <element signature="n#Filter#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -815,8 +829,14 @@
         <state relative-caret-position="1656">
           <caret line="109" column="10" lean-forward="false" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="10" />
           <folding>
-            <marker date="1505850689928" expanded="false" signature="9159:9297" ph="{...}" />
-            <marker date="1505850689928" expanded="false" signature="10298:12010" ph="{...}" />
+            <element signature="n#!!block;n#filterChanged#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#onChangePage#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#sortData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#filterData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#getMusonJSON#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#setFilteredOptions#0;n#DoMain#0" expanded="false" />
+            <element signature="e#6502#7024#0" expanded="false" />
+            <element signature="n#Filter#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -877,8 +897,14 @@
         <state relative-caret-position="540">
           <caret line="30" column="36" lean-forward="false" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
           <folding>
-            <marker date="1505850689928" expanded="false" signature="9159:9297" ph="{...}" />
-            <marker date="1505850689928" expanded="false" signature="10298:12010" ph="{...}" />
+            <element signature="n#!!block;n#filterChanged#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#onChangePage#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#sortData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#filterData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#getMusonJSON#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#setFilteredOptions#0;n#DoMain#0" expanded="false" />
+            <element signature="e#6502#7024#0" expanded="false" />
+            <element signature="n#Filter#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1011,39 +1037,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/client/js/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="94" lean-forward="false" selection-start-line="8" selection-start-column="94" selection-end-line="8" selection-end-column="94" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="822">
-          <caret line="68" column="8" lean-forward="false" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1055,30 +1053,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/build/muson.json">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="54">
+            <caret line="3" column="71" lean-forward="true" selection-start-line="3" selection-start-column="71" selection-end-line="3" selection-end-column="71" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2628">
-          <caret line="146" column="19" lean-forward="false" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+        <state relative-caret-position="210">
+          <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/assets/client/js/app.jsx">
+    <entry file="file://$PROJECT_DIR$/web/assets/build/muson.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="408" column="42" lean-forward="false" selection-start-line="408" selection-start-column="42" selection-end-line="408" selection-end-column="42" />
+        <state relative-caret-position="2322">
+          <caret line="129" column="24" lean-forward="false" selection-start-line="129" selection-start-column="24" selection-end-line="129" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/client/js/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="56" column="36" lean-forward="false" selection-start-line="56" selection-start-column="36" selection-end-line="56" selection-end-column="36" />
           <folding>
-            <marker date="1505850689928" expanded="false" signature="9159:9297" ph="{...}" />
-            <marker date="1505850689928" expanded="false" signature="10298:12010" ph="{...}" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/assets/client/scss/layout.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="156" column="5" lean-forward="true" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+        <state relative-caret-position="429">
+          <caret line="96" column="5" lean-forward="false" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/client/js/app.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="236" column="23" lean-forward="true" selection-start-line="236" selection-start-column="23" selection-end-line="236" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!block;n#filterChanged#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#onChangePage#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#sortData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#filterData#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#getMusonJSON#0;n#DoMain#0" expanded="false" />
+            <element signature="n#!!block;n#setFilteredOptions#0;n#DoMain#0" expanded="false" />
+            <element signature="e#6502#7024#0" expanded="false" />
+            <element signature="n#Filter#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -91,6 +91,10 @@ footer {
         border-top-color: #444;
       }
     }
+    &.name { width: 170px;}
+    &.song { width: 180px;}
+    &.genre { width: 115px;}
+    &.year { width: 35px;}
   }
   td {
     font-weight: 600;
@@ -145,7 +149,7 @@ footer {
     border-radius: 50%;
     border: solid 2px transparent;
 
-    &:not(.disabled):hover {
+    &:not(.disabled):not(.more):hover {
       border-color: #999;
     }
 
@@ -177,6 +181,13 @@ footer {
   }
   .next {
     padding: 0 6px 0 10px;
+  }
+  .more {
+    cursor: default;
+
+    &.disabled {
+      display: none;
+    }
   }
 }
 

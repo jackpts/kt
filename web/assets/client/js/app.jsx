@@ -18,23 +18,30 @@ export class DoMain extends React.Component {
         this.state = {
             musCols : ['please wait..'],
             musData : [],
+            musData0 : [],
             searchFields : [],
             searchValues : [],
             pageOfItems: [],
-            filteredData: [],
-            runOnce: false
+            filterOn: false,
+            sortDir: 0,
+            sortColumn: 'name',
+            filteredOptions: []
         };
         this.filterChanged = this.filterChanged.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
+        this.setSortParams = this.setSortParams.bind(this);
     }
     
-    componentDidMount() {
+    componentWillMount() {
         this.getMusonJSON();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return JSON.stringify(this.state) !== JSON.stringify(nextState);
+    }
+
     filterChanged(field, value) {
-        let data = this.state.musData,
-            fields = this.state.searchFields,
+        let fields = this.state.searchFields,
             values = this.state.searchValues,
             ind = fields.indexOf(field);
         if(value === 'Все' && ind > -1) {
@@ -47,51 +54,86 @@ export class DoMain extends React.Component {
             values.push(value);
         }
 
-        let filteredData = data.filter(
+        console.log('values, fields:', values, fields);
+
+        this.setState({
+            searchValues: values,
+            searchFields: fields,
+            filterOn: !!fields.length
+        });
+
+        // table-filter multiselect working fix
+        this.forceUpdate();
+    }
+
+    onChangePage(pageOfItems) {
+        //console.log('call onChangePage=');
+        this.setState({ pageOfItems: pageOfItems });
+    }
+
+    setSortParams(sortDir, sortColumn) {
+        this.setState({
+            sortColumn: sortColumn,
+            sortDir: sortDir,
+            musData: this.sortData(this.state.musData)
+        });
+
+    }
+
+    sortData(dataToSort) {
+        let sortColumn = this.state.sortColumn,
+            sortDir = this.state.sortDir;
+
+        return dataToSort.sort((a, b) => {
+            if (a[sortColumn] === b[sortColumn]) return 0;
+
+            if ((a[sortColumn] > b[sortColumn] && sortDir === 1)
+                || (a[sortColumn] < b[sortColumn] && sortDir === 2))
+                return 1;
+
+            if ((a[sortColumn] < b[sortColumn] && sortDir === 1)
+                || (a[sortColumn] > b[sortColumn] && sortDir === 2))
+                return -1;
+        });
+    }
+
+    filterData(dataToFilter) {
+        let fields = this.state.searchFields,
+            values = this.state.searchValues;
+
+        return dataToFilter.filter(
             (music) => {
                 let fieldsArray = [];
                 fields.map(f => fieldsArray.push(music[f]));
                 return _.isEqual(fieldsArray, values);
             }
         );
-
-        this.setState({
-            searchValues: values,
-            searchFields: fields,
-            filteredData: filteredData
-        });
-
-        if(!this.state.runOnce) {
-            this.setState({
-                runOnce: true
-            });
-        }
-    }
-
-    onChangePage(pageOfItems) {
-        this.setState({ pageOfItems: pageOfItems });
     }
 
     render () {
         let cols = this.state.musCols,
             data = this.state.musData,
-            fields = this.state.searchFields,
-            values = this.state.searchValues,
             pageOfItems = this.state.pageOfItems,
-            filteredData = this.state.filteredData,
-            runOnce = this.state.runOnce;
+            filterOn = this.state.filterOn,
+            sortDir = this.state.sortDir,
+            filteredOptions = this.state.filteredOptions;
 
-        if(filteredData.length < 1 && !runOnce) {
-            filteredData = data;
+        let paginationData = data,
+            tableData = pageOfItems;
+
+        paginationData = (sortDir > 0) ? this.sortData(paginationData) : this.state.musData0;
+        if(filterOn) {
+            paginationData = this.filterData(paginationData);
+            tableData = this.filterData(tableData);
         }
 
         return (
             <section role="main">
                 <main>
-                    <Table cols={cols} data={pageOfItems} fields={fields} values={values} />
-                    <Filter cols={cols} data={data} onChangeFilter={this.filterChanged} />
+                    <Table cols={cols} data={tableData} setSortParams={this.setSortParams} />
+                    <Filter cols={cols} options={filteredOptions} onChangeFilter={this.filterChanged} />
                 </main>
-                <Pagination data={filteredData} onChangePage={this.onChangePage} />
+                <Pagination data={paginationData} onChangePage={this.onChangePage} filterOn={filterOn} sortOn={sortDir} />
             </section>
         )
     }
@@ -103,10 +145,37 @@ export class DoMain extends React.Component {
                 console.info('Success to get muson.json');
                 this.setState({
                     musCols: responseJSON.columns,
-                    musData: responseJSON.data
+                    musData: responseJSON.data,
+                    musData0: responseJSON.data.slice(0)
                 });
+                this.setFilteredOptions();
             })
             .catch((error) => { console.warn(error); });
+    }
+
+    setFilteredOptions() {
+        let cols = this.state.musCols || [],
+            data = this.state.musData || [],
+            filteredOptions = [];
+
+        cols.map((colData) => {
+            if (colData.key && colData.key !=='song') {
+                let options = _.map(data, colData.key);
+                let uniqOptions = options.filter((elem, index, self) => {
+                    return index === self.indexOf(elem);
+                });
+                filteredOptions.push(
+                    uniqOptions.sort((a,b) => {
+                        if (a > b) return 1;
+                        return -1;
+                    })
+                );
+            }
+        });
+
+        this.setState({
+            filteredOptions: filteredOptions
+        });
     }
 }
 
@@ -116,7 +185,7 @@ class Table extends React.Component {
         super();
         this.thClick = this.thClick.bind(this);
         this.state = {
-            sortDir: 2,
+            sortDir: 0,
             sortColumn: 'name'
         };
     }
@@ -134,10 +203,6 @@ class Table extends React.Component {
         );
     }
 
-    componentWillUpdate(nextProps, nextState) {
-        this.sortMusTable(nextState);
-    }
-
     thClick(e) {
         let sortColumn = this.state.sortColumn;
         let sortDir = this.state.sortDir;
@@ -148,9 +213,6 @@ class Table extends React.Component {
             sortDir++;
             if(sortDir > 2) {
                 sortDir = 0;
-                if(sortColumn === 'name') {
-                    sortDir = 1;
-                }
             }
         }
         sortColumn = curColumn;
@@ -176,44 +238,9 @@ class Table extends React.Component {
             sortDir: sortDir,
             sortColumn: sortColumn
         });
+        this.props.setSortParams(sortDir, sortColumn);
     }
-
-    sortMusTable(lastState) {
-        let sortColumn = lastState.sortColumn,
-            sortDir = lastState.sortDir;
-
-        if(sortDir === 0) {
-            sortColumn = 'name';
-            let firstColumn = document.querySelectorAll('.mus-table th')[0];
-            firstColumn.className = firstColumn.className.replace(/unsorted/,'asc');
-            this.setState({
-                sortDir: 1,
-                sortColumn: sortColumn
-            });
-            return this.props.data.sort(function(a, b){
-                if (a[sortColumn] === b[sortColumn]) return 0;
-
-                if (a[sortColumn] > b[sortColumn])
-                    return 1;
-
-                if (a[sortColumn] < b[sortColumn])
-                    return -1;
-            });
-        }
-
-        return this.props.data.sort(function(a, b){
-            if (a[sortColumn] === b[sortColumn]) return 0;
-
-            if ((a[sortColumn] > b[sortColumn] && sortDir === 1)
-                || (a[sortColumn] < b[sortColumn] && sortDir === 2))
-                return 1;
-
-            if ((a[sortColumn] < b[sortColumn] && sortDir === 1)
-                || (a[sortColumn] > b[sortColumn] && sortDir === 2))
-                return -1;
-        });
-    }
-
+    
     generateHeaders() {
         let cols = this.props.cols;
         let self = this;
@@ -225,22 +252,12 @@ class Table extends React.Component {
 
     generateRows() {
         let cols = this.props.cols,
-            data = this.props.data,
-            fields = this.props.fields,
-            values = this.props.values;
+            data = this.props.data;
 
-        let filteredMusic = data.filter(
-            (music) => {
-                let fieldsArray = [];
-                fields.map(f => fieldsArray.push(music[f]));
-                return _.isEqual(fieldsArray, values);
-            }
-        );
-
-        if(filteredMusic.length < 1) {
+        if(data.length < 1) {
             return <tr key={'1'}><td colSpan="4" key={'1'}>Sorry, nothing found!</td></tr>
         }
-        return filteredMusic.map((item) => {
+        return data.map((item) => {
             let cells = cols.map((colData) => {
                 return <td key={colData.key + item.id}>{item[colData.key]}</td>;
             });
@@ -250,12 +267,6 @@ class Table extends React.Component {
 }
 
 class Filter extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            search: ''
-        };
-    }
 
     render () {
         let generateFilterContent = this.generateFilterContent();
@@ -269,22 +280,26 @@ class Filter extends React.Component {
     }
 
     generateFilterContent() {
-        let cols = this.props.cols || [],
-            data = this.props.data || [];
+        let cols = this.props.cols,
+            options = this.props.options;
         let self = this;
 
-        return cols.map(function(colData) {
-            if (colData.key && colData.key !== 'song') {
-                let options = _.map(data, colData.key);
-                let uniqOptions = options.filter((elem, index, self) => {
-                    return index === self.indexOf(elem);
-                });
+        //return if no options awhile
+        if(options.length < 1) return;
 
+        //remove object with song field
+        let filteredCols = _.clone(cols);
+        filteredCols = filteredCols.filter((el) => {
+           return el.key !== 'song';
+        });
+
+        return filteredCols.map((colData, ind) => {
+            if (colData.key && colData.key !== 'song') {
                 return <li key={colData.key}>
                     <label>{colData.label}</label>
                     <select defaultValue={'Все'} onChange={event => self.props.onChangeFilter(colData.key, event.target.value) } >
-                        <option key={'0'} defaultValue={'All'}>Все</option>
-                        { uniqOptions.map((opt, i) =>
+                        <option key={'0'}>Все</option>
+                        { options[ind].map((opt, i) =>
                                 <option key={i+1} value={opt}>{opt}</option>
                             )
                         }
@@ -301,13 +316,13 @@ class Pagination extends React.Component {
         super(props);
         this.state = {
             pager: {},
-            pageSet: [4, 6 , 10, 20],
+            pageSet: [4, 6, 10, 20],
             pageSize: 4
         };
     }
 
     componentDidMount() {
-        window.addEventListener("resize", this.updateDimensions.bind(this));
+        window.addEventListener("resize", this.setPagingStyle.bind(this));
     }
 
     componentWillMount() {
@@ -318,14 +333,17 @@ class Pagination extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.data !== prevProps.data ||
-            this.state.pageSize !== prevState.pageSize) {
-                this.setPage(this.props.initialPage);
+        if (
+            this.props.data !== prevProps.data ||
+            this.props.filterOn !== prevProps.filterOn ||
+            this.props.sortOn !== prevProps.sortOn
+        ) {
+            this.setPage(this.state.pager.currentPage);
+          }
+        if (this.state.pageSize !== prevState.pageSize) {
+              this.setPage(this.props.initialPage);
         }
-        this.setPagingStyle();
-    }
 
-    updateDimensions() {
         this.setPagingStyle();
     }
 
@@ -438,11 +456,17 @@ class Pagination extends React.Component {
                     <li className={pager.currentPage === 1 ? 'disabled' : ''}>
                         <a href='#' onClick={() => this.setPage(pager.currentPage - 1)} className={'prev'}>&#60;</a>
                     </li>
+                    <li className={pager.startPage > 1 ? 'more' : 'more disabled'}>
+                        <span>...</span>
+                    </li>
                     {pager.pages.map((page, index) =>
                         <li key={index} className={pager.currentPage === page ? 'active' : ''}>
                             <a href='#' onClick={() => this.setPage(page)}>{page}</a>
                         </li>
                     )}
+                    <li className={pager.endPage < pager.totalPages ? 'more' : 'more disabled'}>
+                        <span>...</span>
+                    </li>
                     <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
                         <a href='#' onClick={() => this.setPage(pager.currentPage + 1)} className={'next'}>&#62;</a>
                     </li>

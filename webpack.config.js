@@ -36,7 +36,7 @@ const config = {
                     fallback: "style-loader"
                 })
             },
-            { test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' },
+            //{ test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' },
             {
                 test: /.jsx?$/,
                 loader: 'babel-loader',
@@ -56,8 +56,8 @@ const config = {
         new WebpackNotifierPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            _: 'lodash',
-            $: 'jquery'
+            _: 'lodash'
+            //,$: 'jquery'
         })
     ]
 };
