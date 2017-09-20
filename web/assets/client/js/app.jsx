@@ -116,7 +116,8 @@ export class DoMain extends React.Component {
             filteredOptions = this.state.filteredOptions;
 
         let paginationData = data,
-            tableData = pageOfItems;
+            tableData = pageOfItems,
+            filterFlag =  JSON.stringify(this.state.searchValues);
 
         paginationData = (sortDir > 0) ? this.sortData(paginationData) : this.state.musData0;
         if(filterOn) {
@@ -130,7 +131,7 @@ export class DoMain extends React.Component {
                     <Table cols={cols} data={tableData} setSortParams={this.setSortParams} />
                     <Filter cols={cols} options={filteredOptions} onChangeFilter={this.filterChanged} />
                 </main>
-                <Pagination data={paginationData} onChangePage={this.onChangePage} filterOn={filterOn} sortOn={sortDir} />
+                <Pagination data={paginationData} onChangePage={this.onChangePage} filterFlag={filterFlag} sortOn={sortDir} />
             </section>
         )
     }
@@ -331,16 +332,16 @@ class Pagination extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (
+            this.props.filterFlag !== prevProps.filterFlag ||
+            this.state.pageSize !== prevState.pageSize
+        ) {
+              this.setPage(this.props.initialPage);
+        }
+        else if (
             this.props.data !== prevProps.data ||
             this.props.sortOn !== prevProps.sortOn
         ) {
             this.setPage(this.state.pager.currentPage);
-        }
-        if (
-            this.props.filterOn !== prevProps.filterOn ||
-            this.state.pageSize !== prevState.pageSize
-        ) {
-              this.setPage(this.props.initialPage);
         }
 
         this.setPagingStyle();
@@ -351,8 +352,7 @@ class Pagination extends React.Component {
             pager = this.state.pager,
             pageSize = this.state.pageSize;
 
-        pager.totalPages = Math.ceil(data.length / pageSize);
-
+        pager.totalPages = Math.ceil(data.length / pageSize) || 1;
         if (page < 1 || page > pager.totalPages) { return; }
         // get new pager object for specified page
         pager = this.getPager(data.length, page);
