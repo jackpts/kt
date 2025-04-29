@@ -45,7 +45,7 @@
   "dependencies": {
     "ajv": "6.12.3",
     "babel-runtime": "^6.26.0",
-    "babel-traverse": "^7.0.0-alpha.20",
+    "babel-traverse": "^7.23.2",
     "create-react-class": "^15.7.0",
     "css-loader": "^7.1.2",
     "postcss-loader": "^8.1.1",
