@@ -38,7 +38,7 @@
     "sass": "^1.86.0",
     "sass-loader": "^16.0.5",
     "uuid": "^11.1.0",
-    "webpack": "^7.98.0",
+    "webpack": "^5.89.0",
     "webpack-notifier": "^1.15.0"
   },
   "dependencies": {
@@ -47,11 +47,11 @@
     "ajv": "6.12.3",
     "create-react-class": "^15.7.0",
     "css-loader": "^7.1.2",
+    "js-yaml": "4.1.1",
     "postcss-loader": "^8.1.1",
     "prop-types": "^15.8.1",
     "react-router-dom": "^7.4.0",
     "style-loader": "^4.0.0",
-    "twig": "^1.17.1",
-    "js-yaml": "^4.1.1"
+    "twig": "^1.17.1"
   }
 }
