@@ -31,7 +31,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "jquery": "^3.7.1",
     "json-loader": "^0.5.7",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.9.6",
