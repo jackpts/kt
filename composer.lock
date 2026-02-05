@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c299ae93bf2c1f376b27bf165348a033",
+    "content-hash": "7f39a0a7a2c08a789a7e7d8a16663c1a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3093,16 +3093,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v5.4.50",
+            "version": "v5.4.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "4b031a7937fcfde214a18b16c18fd670f2fc5e2f"
+                "reference": "c5a2ee30e4049191b75cfdc16a0fc1eaeab9945a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/4b031a7937fcfde214a18b16c18fd670f2fc5e2f",
-                "reference": "4b031a7937fcfde214a18b16c18fd670f2fc5e2f",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/c5a2ee30e4049191b75cfdc16a0fc1eaeab9945a",
+                "reference": "c5a2ee30e4049191b75cfdc16a0fc1eaeab9945a",
                 "shasum": ""
             },
             "require": {
@@ -3296,7 +3296,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/symfony/issues",
-                "source": "https://github.com/symfony/symfony/tree/v5.4.50"
+                "source": "https://github.com/symfony/symfony/tree/v5.4.51"
             },
             "funding": [
                 {
@@ -3316,7 +3316,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-12T11:09:14+00:00"
+            "time": "2026-01-28T07:10:49+00:00"
         },
         {
             "name": "twig/twig",
