@@ -48,9 +48,11 @@
     "create-react-class": "^15.7.0",
     "css-loader": "^7.1.2",
     "js-yaml": "4.1.1",
+    "minimatch": "^10.2.3",
     "postcss-loader": "^8.1.1",
     "prop-types": "^15.8.1",
     "react-router-dom": "^7.9.6",
+    "serialize-javascript": "^7.0.3",
     "style-loader": "^4.0.0",
     "twig": "^1.17.1"
   },
