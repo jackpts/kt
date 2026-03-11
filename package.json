@@ -59,7 +59,7 @@
   "resolutions": {
     "js-yaml": "4.1.1",
     "lodash": "4.17.23",
-    "locutus": "2.0.39",
-    "minimatch": "10.2.1"
+    "locutus": "^3.0.0",
+    "minimatch": "^10.2.3"
   }
 }
