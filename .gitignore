@@ -16,3 +16,6 @@
 /vendor/
 /web/bundles/
 /node_modules
+[1]
+filesystem
+neo-tree

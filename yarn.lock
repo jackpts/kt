@@ -1903,9 +1903,9 @@ locate-path@^7.1.0:
     p-locate "^6.0.0"
 
 locutus@^2.0.11, locutus@^3.0.0:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/locutus/-/locutus-3.0.11.tgz#7beee4c01cff280d5aa359fcf9fc5d5aa4e43569"
-  integrity sha512-6ZL4SJ4AeH7bPX45SgLZsK7TTCF75mMzvuEobDVp18F7BcqmaxBp9R6JwpbZSwNKfWhx2pnHgl7CFuHPd9rkgg==
+  version "3.0.28"
+  resolved "https://registry.yarnpkg.com/locutus/-/locutus-3.0.28.tgz#5a23eb7d63ff252c883f37be468234491e2a5699"
+  integrity sha512-ONJN6vbpSzn7FGHGiPZG3J0T4IgCgAJjvGrAhJSJw5HTVZin1rfX+saJiuGOjIZfa6O7kMQTibmb6Woc7mJUQA==
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
