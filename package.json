@@ -31,7 +31,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "jquery": "^3.7.1",
     "json-loader": "^0.5.7",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.9.6",
@@ -58,9 +58,11 @@
     "twig": "^1.17.1"
   },
   "resolutions": {
+    "extract-text-webpack-plugin/**/ajv": "6.14.0",
     "brace-expansion": "5.0.5",
+    "json5": "1.0.2",
     "js-yaml": "4.1.1",
-    "lodash": "4.17.23",
+    "lodash": "4.18.0",
     "locutus": "^3.0.0",
     "minimatch": "^10.2.3",
     "picomatch": "4.0.4",
