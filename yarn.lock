@@ -1872,7 +1872,7 @@ locate-path@^7.1.0:
   dependencies:
     p-locate "^6.0.0"
 
-locutus@^2.0.11, locutus@^3.0.0:
+locutus@^3.0.0, locutus@^3.0.9:
   version "3.0.28"
   resolved "https://registry.yarnpkg.com/locutus/-/locutus-3.0.28.tgz#5a23eb7d63ff252c883f37be468234491e2a5699"
   integrity sha512-ONJN6vbpSzn7FGHGiPZG3J0T4IgCgAJjvGrAhJSJw5HTVZin1rfX+saJiuGOjIZfa6O7kMQTibmb6Woc7mJUQA==
@@ -1923,7 +1923,7 @@ mime-types@^2.1.27:
   dependencies:
     mime-db "1.52.0"
 
-minimatch@3.0.x, minimatch@^10.2.3, minimatch@^3.0.4:
+minimatch@^10, minimatch@^10.2.3, minimatch@^3.0.4:
   version "10.2.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-10.2.4.tgz#465b3accbd0218b8281f5301e27cedc697f96fde"
   integrity sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==
@@ -2420,14 +2420,14 @@ trim-right@^1.0.1:
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
   integrity sha512-WZGXGstmCWgeevgTL54hrCuw1dyMQIzWy7ZfqRJfSmJZBwklI15egmQytFP6bPidmw3M8d5yEowl1niq4vmqZw==
 
-twig@^1.17.1:
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/twig/-/twig-1.17.1.tgz#2e4b158cbd072e93deac009d76a807a3d9966b24"
-  integrity sha512-atxccyr/BHtb1gPMA7Lvki0OuU17XBqHsNH9lzDHt9Rr1293EVZOosSZabEXz/DPVikIW8ZDqSkEddwyJnQN2w==
+twig@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/twig/-/twig-3.0.0.tgz#b847ba9837f79154e8b935239fadc06a4260856a"
+  integrity sha512-cMfYLWAgdW15B7L5wmanmga113e4phQmo3rk5EFuUrQd99g7I3ncxgynS38P01m4ZXBDSdMYUTV1g3A66/Y56Q==
   dependencies:
     "@babel/runtime" "^7.8.4"
-    locutus "^2.0.11"
-    minimatch "3.0.x"
+    locutus "^3.0.9"
+    minimatch "^10"
     walk "2.3.x"
 
 undici-types@~7.18.0:
