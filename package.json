@@ -55,7 +55,7 @@
     "react-router-dom": "^7.9.6",
     "serialize-javascript": "^7.0.5",
     "style-loader": "^4.0.0",
-    "twig": "^1.17.1"
+    "twig": "^3.0.0"
   },
   "resolutions": {
     "extract-text-webpack-plugin/**/ajv": "6.14.0",
