@@ -31,7 +31,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "jquery": "^3.7.1",
     "json-loader": "^0.5.7",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.9.6",
@@ -59,8 +59,10 @@
   },
   "resolutions": {
     "js-yaml": "4.1.1",
-    "lodash": "4.17.23",
     "locutus": "^3.0.0",
-    "minimatch": "^10.2.3"
+    "lodash": "^4.18.0",
+    "minimatch": "^10.2.3",
+    "ajv": "^6.12.3",
+    "json5": "^1.0.2"
   }
 }
