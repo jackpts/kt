@@ -2628,7 +2628,7 @@ __metadata:
     serialize-javascript: "npm:^7.0.3"
     style-loader: "npm:^4.0.0"
     twig: "npm:^2.0.0"
-    uuid: "npm:^11.1.0"
+    uuid: "npm:^11.1.1"
     webpack: "npm:^5.104.1"
     webpack-notifier: "npm:^1.15.0"
   languageName: unknown
@@ -3626,7 +3626,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^11.1.0":
+"uuid@npm:^11.1.1":
   version: 11.1.1
   resolution: "uuid@npm:11.1.1"
   bin:

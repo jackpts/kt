@@ -29,7 +29,7 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/mailer": "^5.4",
         "symfony/symfony": "~5.4.51",
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.26"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0"
