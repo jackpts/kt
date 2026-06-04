@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9edd9aa54abcd6bd31c9815a3d272df",
+    "content-hash": "833fbb89b587ea02ddcbc5c30ee19b85",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2369,16 +2369,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.33.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "9614ac4d8061dc257ecc64cba1b140873dce8ad3"
+                "reference": "dc21118016c039a66235cf93d96b435ffb282412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/9614ac4d8061dc257ecc64cba1b140873dce8ad3",
-                "reference": "9614ac4d8061dc257ecc64cba1b140873dce8ad3",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/dc21118016c039a66235cf93d96b435ffb282412",
+                "reference": "dc21118016c039a66235cf93d96b435ffb282412",
                 "shasum": ""
             },
             "require": {
@@ -2432,7 +2432,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.33.0"
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -2452,7 +2452,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-10T14:38:51+00:00"
+            "time": "2026-05-25T15:22:23+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
@@ -3093,16 +3093,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v5.4.51",
+            "version": "v5.4.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "c5a2ee30e4049191b75cfdc16a0fc1eaeab9945a"
+                "reference": "eabc5f9ed7831fe6de8d609c5ebc29aed1f8ef8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/c5a2ee30e4049191b75cfdc16a0fc1eaeab9945a",
-                "reference": "c5a2ee30e4049191b75cfdc16a0fc1eaeab9945a",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/eabc5f9ed7831fe6de8d609c5ebc29aed1f8ef8f",
+                "reference": "eabc5f9ed7831fe6de8d609c5ebc29aed1f8ef8f",
                 "shasum": ""
             },
             "require": {
@@ -3296,7 +3296,7 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/symfony/issues",
-                "source": "https://github.com/symfony/symfony/tree/v5.4.51"
+                "source": "https://github.com/symfony/symfony/tree/v5.4.52"
             },
             "funding": [
                 {
@@ -3316,7 +3316,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-28T07:10:49+00:00"
+            "time": "2026-05-20T08:22:01+00:00"
         },
         {
             "name": "twig/twig",
