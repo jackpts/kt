@@ -28,7 +28,7 @@
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/mailer": "^5.4",
-        "symfony/symfony": "~5.4.52",
+        "symfony/symfony": "~5.4.53",
         "twig/twig": "^3.26"
     },
     "require-dev": {
