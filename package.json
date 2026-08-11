@@ -69,7 +69,7 @@
     "json5": "^1.0.2",
     "tar": "^7.5.18",
     "@babel/plugin-transform-modules-systemjs": "^7.29.4",
-    "undici": "^6.27.0",
+    "undici": "^6.28.0",
     "immutable": "^5.1.8"
   }
 }
